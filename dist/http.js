@@ -11,6 +11,7 @@ class HttpServer {
     constructor(id, port, origins, requests) {
         this.app = (0, express_1.default)();
         this.app.use((0, cors_1.default)());
+        this.app.use(express_1.default.json());
         for (const req of requests) {
             const { url, requestType, method } = req;
             switch (requestType) {

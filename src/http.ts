@@ -9,11 +9,12 @@ export interface Request {
 }
 
 export class HttpServer {
-    private app = express();
+    private app;
 
     constructor(id: string, port: number, origins: string[], requests: Request[]) {
-
+        this.app = express();
         this.app.use(cors());
+        this.app.use(express.json());
 
         for (const req of requests) {
             const { url, requestType, method } = req;
